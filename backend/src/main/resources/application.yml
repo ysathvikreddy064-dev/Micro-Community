@@ -1,0 +1,37 @@
+﻿spring:
+  application:
+    name: micro-community
+  datasource:
+    url: jdbc:postgresql://\${DB_HOST:localhost}:\${DB_PORT:5432}/\${DB_NAME:community}
+    username: \${DB_USER:community}
+    password: \${DB_PASSWORD:community}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 30MB
+
+server:
+  port: \${PORT:8080}
+
+app:
+  jwt:
+    secret: \${JWT_SECRET:change-me-please-change-me-32-bytes}
+    expiration-ms: 86400000
+  s3:
+    bucket: \${S3_BUCKET}
+    region: \${S3_REGION}
+    access-key: \${S3_ACCESS_KEY}
+    secret-key: \${S3_SECRET_KEY}
+    endpoint: \${S3_ENDPOINT:}
+
+logging:
+  level:
+    root: INFO
+    com.community: DEBUG

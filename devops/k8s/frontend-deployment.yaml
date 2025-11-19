@@ -1,0 +1,33 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: community-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: community-frontend
+  template:
+    metadata:
+      labels:
+        app: community-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: your-registry/community-frontend:1.0.0
+          ports:
+            - containerPort: 80
+          env:
+            - name: API_BASE
+              value: "http://community-backend:8080/api"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: community-frontend
+spec:
+  selector:
+    app: community-frontend
+  ports:
+    - port: 80
+      targetPort: 80

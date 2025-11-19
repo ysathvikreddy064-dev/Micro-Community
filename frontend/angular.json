@@ -1,0 +1,32 @@
+﻿{
+  \"\$schema\": \"https://json.schemastore.org/angular-cli\",
+  \"version\": 1,
+  \"projects\": {
+    \"micro-community-frontend\": {
+      \"projectType\": \"application\",
+      \"root\": \"\",
+      \"sourceRoot\": \"src\",
+      \"architect\": {
+        \"build\": {
+          \"builder\": \'@angular-devkit/build-angular:browser\",
+          \"options\": {
+            \"outputPath\": \"dist/micro-community-frontend\",
+            \"index\": \"src/index.html\",
+            \"main\": \"src/main.ts\",
+            \"polyfills\": [],
+            \"tsConfig\": \"tsconfig.json\",
+            \"styles\": [\"src/styles.css\"],
+            \"scripts\": []
+          }
+        },
+        \"serve\": {
+          \"builder\": \'@angular-devkit/build-angular:dev-server\",
+          \"options\": {
+            \"browserTarget\": \"micro-community-frontend:build\"
+          }
+        }
+      }
+    }
+  },
+  \"defaultProject\": \"micro-community-frontend\"
+}

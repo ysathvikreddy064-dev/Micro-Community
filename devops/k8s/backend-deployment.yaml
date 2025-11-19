@@ -1,0 +1,61 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: community-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: community-backend
+  template:
+    metadata:
+      labels:
+        app: community-backend
+    spec:
+      containers:
+        - name: backend
+          image: your-registry/community-backend:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: postgres
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: community
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: db_user }
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: db_password }
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: jwt_secret }
+            - name: S3_BUCKET
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: s3_bucket }
+            - name: S3_REGION
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: s3_region }
+            - name: S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: s3_access_key }
+            - name: S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: s3_secret_key }
+            - name: S3_ENDPOINT
+              valueFrom:
+                secretKeyRef: { name: community-secrets, key: s3_endpoint }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: community-backend
+spec:
+  selector:
+    app: community-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
