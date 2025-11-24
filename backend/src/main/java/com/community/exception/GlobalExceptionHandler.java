@@ -1,4 +1,4 @@
-﻿package com.community.exception;
+package com.community.exception;
 
 import com.community.util.ApiResponse;
 import jakarta.validation.ConstraintViolationException;
@@ -12,13 +12,13 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<ApiResponse<?>> handleValidation(MethodArgumentNotValidException ex) {
     String msg = ex.getBindingResult().getFieldErrors().stream()
-        .map(e -> e.getField() + \" \" + e.getDefaultMessage()).findFirst().orElse(\"Validation error\");
+        .map(e -> e.getField() + " " + e.getDefaultMessage()).findFirst().orElse("Validation error");
     return ResponseEntity.badRequest().body(ApiResponse.error(msg));
   }
 
   @ExceptionHandler(ConstraintViolationException.class)
   public ResponseEntity<ApiResponse<?>> handleConstraint(ConstraintViolationException ex) {
-    String msg = ex.getConstraintViolations().stream().findFirst().map(v -> v.getMessage()).orElse(\"Validation error\");
+    String msg = ex.getConstraintViolations().stream().findFirst().map(v -> v.getMessage()).orElse("Validation error");
     return ResponseEntity.badRequest().body(ApiResponse.error(msg));
   }
 

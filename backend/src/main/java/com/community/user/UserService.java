@@ -1,4 +1,4 @@
-﻿package com.community.user;
+package com.community.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +12,6 @@ public class UserService implements UserDetailsService {
 
   @Override
   public UserDetails loadUserByUsername(String username) {
-    return userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException(\"User not found\"));
+    return userRepository.findByEmail(username).orElseThrow(() -> new RuntimeException("User not found"));
   }
 }

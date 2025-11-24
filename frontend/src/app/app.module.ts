@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { GoogleMapsModule } from '@angular/google-maps';
+//import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +39,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
   imports: [
     BrowserModule, BrowserAnimationsModule, HttpClientModule, FormsModule, ReactiveFormsModule,
     AppRoutingModule, MatToolbarModule, MatButtonModule, MatInputModule, MatCardModule,
-    MatSelectModule, MatTableModule, MatIconModule, MatPaginatorModule, GoogleMapsModule
+    MatSelectModule, MatTableModule, MatIconModule, MatPaginatorModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]

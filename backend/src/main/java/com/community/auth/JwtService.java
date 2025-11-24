@@ -1,4 +1,4 @@
-﻿package com.community.auth;
+package com.community.auth;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -13,9 +13,9 @@ import java.util.Map;
 
 @Service
 public class JwtService {
-  @Value(\"${app.jwt.secret}\")
+  @Value("${app.jwt.secret}")
   private String secret;
-  @Value(\"${app.jwt.expiration-ms:86400000}\")
+  @Value("${app.jwt.expiration-ms:86400000}")
   private long expirationMs;
 
   private Key key;

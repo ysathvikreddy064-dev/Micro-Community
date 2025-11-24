@@ -3,9 +3,9 @@ import { IssueService } from '../../core/services/issue.service';
 
 @Component({
   template: `
-  <google-map height=\"80vh\" width=\"100%\" [center]=\"center\" [zoom]=\"12\">
-    <map-marker *ngFor=\"let i of issues\" [position]=\"{lat:i.latitude,lng:i.longitude}\" [title]=\"i.title\"></map-marker>
-  </google-map>
+    <div style="height:80vh; background:#eee; display:flex; align-items:center; justify-content:center;">
+      <p>Map disabled in production</p>
+    </div>
   `
 })
 export class MapComponent implements OnInit {

@@ -1,37 +1,50 @@
-﻿package com.community.issue;
+package com.community.issue;
 
 import com.community.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = \"issues\")
-@Getter @Setter @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Table(name = "issues")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Issue {
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
 
-  @Column(nullable=false) private String title;
-  @Column(nullable=false, length=2000) private String description;
-  @Column(nullable=false) private Double latitude;
-  @Column(nullable=false) private Double longitude;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  @ManyToOne(optional=false) private Category category;
+    @Column(nullable = false)
+    private String title;
 
-  @Enumerated(EnumType.STRING)
-  @Column(nullable=false)
-  private IssueStatus status;
+    @Column(nullable = false, length = 2000)
+    private String description;
 
-  private String assignedDepartment;
-  private Instant createdAt;
+    @Column(nullable = false)
+    private Double latitude;
 
-  @ManyToOne(optional=false) private User createdBy;
+    @Column(nullable = false)
+    private Double longitude;
 
-  @OneToMany(mappedBy = \"issue\", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<IssueImage> images = new ArrayList<>();
+    @ManyToOne(optional = false)
+    private Category category;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private IssueStatus status;
+
+    private String assignedDepartment;
+    private Instant createdAt;
+
+    @ManyToOne(optional = false)
+    private User createdBy;
+
+    @OneToMany(mappedBy = "issue", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<IssueImage> images = new ArrayList<>();
 }

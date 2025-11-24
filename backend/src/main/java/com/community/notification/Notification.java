@@ -1,21 +1,31 @@
-﻿package com.community.notification;
+package com.community.notification;
 
 import com.community.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.Instant;
 
 @Entity
-@Table(name = \"notifications\")
-@Getter @Setter @Builder
-@NoArgsConstructor @AllArgsConstructor
+@Table(name = "notifications")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Notification {
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
 
-  @ManyToOne(optional=false) private User user;
-  @Column(nullable=false) private String message;
-  @Column(nullable=false) private boolean readFlag;
-  @Column(nullable=false) private Instant createdAt;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(optional = false)
+    private User user;
+
+    @Column(nullable = false)
+    private String message;
+
+    @Column(nullable = false)
+    private boolean readFlag;
+
+    @Column(nullable = false)
+    private Instant createdAt;
 }

@@ -1,4 +1,4 @@
-﻿package com.community.config;
+package com.community.config;
 
 import com.community.auth.JwtAuthenticationFilter;
 import com.community.user.UserService;
@@ -21,37 +21,47 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-  private final JwtAuthenticationFilter jwtFilter;
-  private final UserService userService;
 
-  @Bean
-  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.csrf(csrf -> csrf.disable())
-        .authorizeHttpRequests(auth -> auth
-            .requestMatchers(\"/api/auth/**\", \"/v3/api-docs/**\", \"/swagger-ui/**\").permitAll()
-            .requestMatchers(HttpMethod.GET, \"/api/issues/public/**\").permitAll()
-            .anyRequest().authenticated())
-        .httpBasic(Customizer.withDefaults());
+    private final JwtAuthenticationFilter jwtFilter;
+    private final UserService userService;
 
-    http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-    return http.build();
-  }
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth -> auth
+                    .requestMatchers(
+                        "/",
+                        "/index.html",
+                        "/api/auth/**",
+                        "/v3/api-docs/**",
+                        "/swagger-ui/**",
+                        "/swagger-ui.html"
+                    ).permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/issues/public/**").permitAll()
+                    .anyRequest().authenticated()
+            )
+            .httpBasic(basic -> basic.disable()); // Disable browser popup
 
-  @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
-  }
+        http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
-  @Bean
-  public DaoAuthenticationProvider authProvider() {
-    DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-    provider.setUserDetailsService(userService);
-    provider.setPasswordEncoder(passwordEncoder());
-    return provider;
-  }
+        return http.build();
+    }
 
-  @Bean
-  public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
-    return configuration.getAuthenticationManager();
-  }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userService);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
+        return configuration.getAuthenticationManager();
+    }
 }

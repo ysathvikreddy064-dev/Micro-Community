@@ -1,4 +1,4 @@
-﻿package com.community.issue;
+package com.community.issue;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

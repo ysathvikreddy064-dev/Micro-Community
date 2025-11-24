@@ -1,12 +1,14 @@
-﻿package com.community.issue.dto;
+package com.community.issue.dto;
 
 import com.community.issue.IssueStatus;
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class IssueUpdateStatusRequest {
-  @NotNull private IssueStatus status;
-  private String note;
-  private String assignedDepartment;
+
+    private IssueStatus status;
+    private String note;
+    private String assignedDepartment;
 }

@@ -1,4 +1,4 @@
-﻿package com.community.issue;
+package com.community.issue;
 
 import com.community.issue.dto.IssueCreateRequest;
 import com.community.issue.dto.IssueResponse;
@@ -49,14 +49,14 @@ public class IssueService {
 
     if (files != null) {
       for (MultipartFile file : files) {
-        String url = s3Service.upload(file, \"issues\");
+        String url = s3Service.upload(file, "issues");
         imageRepository.save(IssueImage.builder().issue(issue).url(url).build());
       }
     }
 
     historyRepository.save(IssueStatusHistory.builder()
         .issue(issue).fromStatus(IssueStatus.OPEN).toStatus(IssueStatus.OPEN)
-        .note(\"Issue created\").changedBy(user.getEmail()).changedAt(Instant.now()).build());
+        .note("Issue created").changedBy(user.getEmail()).changedAt(Instant.now()).build());
 
     return toResponse(issue);
   }
@@ -87,7 +87,7 @@ public class IssueService {
         .note(req.getNote()).changedBy(admin.getEmail()).changedAt(Instant.now()).build());
 
     notificationService.notify(issue.getCreatedBy(),
-        String.format(\"Your issue '%s' status changed from %s to %s\", issue.getTitle(), from, req.getStatus()));
+        String.format("Your issue '%s' status changed from %s to %s", issue.getTitle(), from, req.getStatus()));
 
     return toResponse(issue);
   }

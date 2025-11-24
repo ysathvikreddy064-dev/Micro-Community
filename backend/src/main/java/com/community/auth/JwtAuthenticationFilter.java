@@ -1,4 +1,4 @@
-﻿package com.community.auth;
+package com.community.auth;
 
 import com.community.user.UserService;
 import io.jsonwebtoken.Claims;
@@ -23,7 +23,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) {
     try {
       String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-      if (header != null && header.startsWith(\"Bearer \")) {
+      if (header != null && header.startsWith("Bearer ")) {
         String token = header.substring(7);
         Claims claims = jwtService.validate(token);
         String email = claims.getSubject();

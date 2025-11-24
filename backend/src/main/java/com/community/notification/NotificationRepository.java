@@ -1,4 +1,4 @@
-﻿package com.community.notification;
+package com.community.notification;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

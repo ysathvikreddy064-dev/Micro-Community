@@ -1,8 +1,9 @@
-﻿package com.community.auth;
+package com.community.auth;
 
-import com.community.issue.dto.JwtResponse;
-import com.community.issue.dto.LoginRequest;
-import com.community.issue.dto.RegisterRequest;
+import com.community.auth.JwtResponse;
+import com.community.auth.LoginRequest;
+import com.community.auth.RegisterRequest;
+
 import com.community.user.Role;
 import com.community.user.User;
 import com.community.user.UserRepository;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping(\"/api/auth\")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 public class AuthController {
   private final UserRepository userRepository;
@@ -25,10 +26,10 @@ public class AuthController {
   private final JwtService jwtService;
   private final AuthenticationManager authManager;
 
-  @PostMapping(\"/register\")
+  @PostMapping("/register")
   public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest req) {
     if (userRepository.findByEmail(req.getEmail()).isPresent()) {
-      return ResponseEntity.badRequest().body(Map.of(\"message\", \"Email already registered\"));
+      return ResponseEntity.badRequest().body(Map.of("message", "Email already registered"));
     }
     User user = User.builder()
         .email(req.getEmail())
@@ -39,15 +40,15 @@ public class AuthController {
         .build();
     userRepository.save(user);
 
-    String token = jwtService.generateToken(user.getEmail(), Map.of(\"role\", user.getRole().name(), \"name\", user.getFullName()));
+    String token = jwtService.generateToken(user.getEmail(), Map.of("role", user.getRole().name(), "name", user.getFullName()));
     return ResponseEntity.ok(new JwtResponse(token, user.getRole().name(), user.getFullName()));
   }
 
-  @PostMapping(\"/login\")
+  @PostMapping("/login")
   public ResponseEntity<?> login(@Valid @RequestBody LoginRequest req) {
     authManager.authenticate(new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword()));
     var user = userRepository.findByEmail(req.getEmail()).orElseThrow();
-    String token = jwtService.generateToken(user.getEmail(), Map.of(\"role\", user.getRole().name(), \"name\", user.getFullName()));
+    String token = jwtService.generateToken(user.getEmail(), Map.of("role", user.getRole().name(), "name", user.getFullName()));
     return ResponseEntity.ok(new JwtResponse(token, user.getRole().name(), user.getFullName()));
   }
 }

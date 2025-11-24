@@ -3,10 +3,9 @@ import { IssueService } from '../../../core/services/issue.service';
 
 @Component({
   template: `
-  <google-map height=\"80vh\" width=\"100%\" [center]=\"center\" [zoom]=\"12\">
-    <map-marker *ngFor=\"let i of issues\" [position]=\"{lat:i.latitude,lng:i.longitude}\" [title]=\"i.title\"
-      [label]=\"i.status\"></map-marker>
-  </google-map>
+    <div style="height:80vh; background:#eee; display:flex; align-items:center; justify-content:center;">
+      <p>Admin map disabled</p>
+    </div>
   `
 })
 export class AdminMapComponent implements OnInit {

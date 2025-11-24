@@ -1,4 +1,4 @@
-﻿package com.community.issue;
+package com.community.issue;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
