@@ -15,5 +15,9 @@
     "allowSyntheticDefaultImports": true,
     "strict": false,
     "types": []
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true,
+    "strictTemplates": false
   }
 }

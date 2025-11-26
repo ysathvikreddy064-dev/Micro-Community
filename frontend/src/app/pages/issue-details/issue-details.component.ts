@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IssueService } from '../../core/services/issue.service';
 
@@ -8,10 +8,8 @@ import { IssueService } from '../../core/services/issue.service';
     <h2>{{issue.title}}</h2>
     <p>{{issue.description}}</p>
     <p><b>Category:</b> {{issue.categoryName}} | <b>Status:</b> {{issue.status}}</p>
-    <div style=\"height:300px\">
-      <google-map [center]=\"{lat:issue.latitude, lng:issue.longitude}\" [zoom]=\"15\">
-        <map-marker [position]=\"{lat:issue.latitude, lng:issue.longitude}\"></map-marker>
-      </google-map>
+    <div style="height:300px; background:#eee; display:flex; justify-content:center; align-items:center;">
+      Map disabled
     </div>
     <div *ngIf=\"issue.imageUrls?.length\">
       <h3>Images</h3>
@@ -21,9 +19,9 @@ import { IssueService } from '../../core/services/issue.service';
   `
 })
 export class IssueDetailsComponent implements OnInit {
-  issue:any;
-  constructor(private route: ActivatedRoute, private issueService: IssueService) {}
-  ngOnInit(){
+  issue: any;
+  constructor(private route: ActivatedRoute, private issueService: IssueService) { }
+  ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.issueService.get(id).subscribe(res => this.issue = res.data);
   }

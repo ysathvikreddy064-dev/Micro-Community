@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IssueService } from '../../core/services/issue.service';
 
 @Component({
