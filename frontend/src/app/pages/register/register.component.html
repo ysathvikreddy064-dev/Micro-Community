@@ -1,0 +1,29 @@
+<div class="center-container">
+  <mat-card class="card">
+    <h2>Register</h2>
+
+    <form (ngSubmit)="submit()" class="form">
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Full Name</mat-label>
+        <input matInput [(ngModel)]="fullName" name="fullName" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" name="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" name="password" type="password" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Area (optional)</mat-label>
+        <input matInput [(ngModel)]="area" name="area" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="full">Register</button>
+    </form>
+  </mat-card>
+</div>

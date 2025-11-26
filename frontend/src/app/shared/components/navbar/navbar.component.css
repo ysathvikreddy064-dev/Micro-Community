@@ -1,0 +1,8 @@
+.spacer {
+  flex: 1;
+}
+
+.brand {
+  font-weight: bold;
+  cursor: pointer;
+}

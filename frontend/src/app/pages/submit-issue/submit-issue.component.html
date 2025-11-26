@@ -1,0 +1,37 @@
+<div class="center-container">
+  <mat-card class="card">
+    <h2>Submit Issue</h2>
+
+    <form (ngSubmit)="submit()" class="form">
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="title" name="title" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Description</mat-label>
+        <textarea matInput rows="3" [(ngModel)]="description" name="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="categoryId" name="categoryId">
+          <mat-option *ngFor="let c of categories" [value]="c.id">
+            {{ c.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="map-placeholder">
+        <p>Map disabled in this build</p>
+      </div>
+
+      <input type="file" multiple (change)="filesChanged($event)" class="file" />
+
+      <button mat-raised-button color="primary" class="full">
+        Submit
+      </button>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+
+  <span class="brand" (click)="router.navigate(['/'])">
+    Micro-Community
+  </span>
+
+  <span class="spacer"></span>
+
+  <button mat-button routerLink="/">Home</button>
+  <button mat-button routerLink="/submit">Report</button>
+  <button mat-button routerLink="/my-issues">My Issues</button>
+  <button mat-button routerLink="/admin">Admin</button>
+  <button mat-button routerLink="/login">Login</button>
+
+  <!-- DARK MODE TOGGLE -->
+  <button mat-icon-button (click)="theme.toggle()">
+    <mat-icon>
+      {{ theme.dark ? 'dark_mode' : 'light_mode' }}
+    </mat-icon>
+  </button>
+
+</mat-toolbar>

@@ -1,0 +1,26 @@
+<mat-card class="card">
+  <h2>Admin Dashboard</h2>
+
+  <div class="grid">
+    <mat-card class="stat-card">
+      <h3>Total Issues</h3>
+      <p>{{ stats?.total }}</p>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <h3>Open</h3>
+      <p>{{ stats?.open }}</p>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <h3>In Progress</h3>
+      <p>{{ stats?.progress }}</p>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <h3>Resolved</h3>
+      <p>{{ stats?.resolved }}</p>
+    </mat-card>
+  </div>
+
+</mat-card>

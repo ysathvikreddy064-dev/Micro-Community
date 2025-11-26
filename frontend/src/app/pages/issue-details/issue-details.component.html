@@ -1,0 +1,25 @@
+<mat-card *ngIf="issue" class="card">
+
+  <h2>{{ issue.title }}</h2>
+
+  <p>{{ issue.description }}</p>
+
+  <p>
+    <b>Category:</b> {{ issue.categoryName }} &nbsp; | &nbsp;
+    <b>Status:</b> {{ issue.status }}
+  </p>
+
+  <div class="map-container">
+    <div class="placeholder">
+      <p>Map disabled</p>
+    </div>
+  </div>
+
+  <div *ngIf="issue.imageUrls?.length">
+    <h3>Images</h3>
+    <div class="images">
+      <img *ngFor="let url of issue.imageUrls" [src]="url" />
+    </div>
+  </div>
+
+</mat-card>

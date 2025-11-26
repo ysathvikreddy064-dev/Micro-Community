@@ -10,9 +10,10 @@ import { AdminLoginComponent } from './pages/admin/login/admin-login.component';
 import { AdminDashboardComponent } from './pages/admin/dashboard/admin-dashboard.component';
 import { AdminIssuesTableComponent } from './pages/admin/issues-table/issues-table.component';
 import { AdminIssueDetailsComponent } from './pages/admin/issue-details/admin-issue-details.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'submit', component: SubmitIssueComponent },

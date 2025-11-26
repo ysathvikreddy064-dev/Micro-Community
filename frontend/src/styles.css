@@ -1,2 +1,48 @@
-﻿html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif} 
+﻿/* ===== GLOBAL BASE STYLES ===== */
 
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+  background: #f4f6fb;
+  color: #222;
+}
+
+/* DARK MODE */
+.dark-theme {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.full {
+  width: 100%;
+}
+
+mat-card {
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+tr.mat-row:hover {
+  background: rgba(0,0,0,0.05);
+  cursor: pointer;
+}
+
+.placeholder, .map-placeholder {
+  height: 350px;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #444;
+}

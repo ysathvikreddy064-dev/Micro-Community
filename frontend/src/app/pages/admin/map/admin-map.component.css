@@ -1,0 +1,9 @@
+.card { margin: 20px; padding: 20px; }
+.map-placeholder {
+  height: 350px;
+  background: #eee;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+
 @Component({
-  template: `
-  <mat-card>
-    <h2>Admin Dashboard</h2>
-    <p>Quick links:</p>
-    <button mat-raised-button color=\"primary\" routerLink=\"/admin/issues\">Issues</button>
-    <button mat-raised-button color=\"accent\" routerLink=\"/admin\">Map</button>
-  </mat-card>
-  `
+  selector: 'app-admin-dashboard',
+  templateUrl: './admin-dashboard.component.html',
+  styleUrls: ['./admin-dashboard.component.css']
 })
-export class AdminDashboardComponent {}
+export class AdminDashboardComponent {
+
+  stats = {
+    total: 120,
+    open: 35,
+    progress: 50,
+    resolved: 35
+  };
+}

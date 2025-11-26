@@ -1,0 +1,32 @@
+<mat-card *ngIf="issue" class="card">
+
+  <h2>{{ issue.title }}</h2>
+
+  <p>{{ issue.description }}</p>
+
+  <p><b>Status:</b> {{ issue.status }}</p>
+
+  <mat-form-field class="full" appearance="outline">
+    <mat-label>New Status</mat-label>
+    <mat-select [(ngModel)]="newStatus">
+      <mat-option value="OPEN">Open</mat-option>
+      <mat-option value="IN_PROGRESS">In Progress</mat-option>
+      <mat-option value="RESOLVED">Resolved</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Assigned Department</mat-label>
+    <input matInput [(ngModel)]="assignedDepartment" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full">
+    <mat-label>Note</mat-label>
+    <input matInput [(ngModel)]="note" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="update()" class="full">
+    Update
+  </button>
+
+</mat-card>

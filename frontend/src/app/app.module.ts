@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 //import { GoogleMapsModule } from '@angular/google-maps';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,10 +29,11 @@ import { AdminIssuesTableComponent } from './pages/admin/issues-table/issues-tab
 import { AdminIssueDetailsComponent } from './pages/admin/issue-details/admin-issue-details.component';
 import { AdminMapComponent } from './pages/admin/map/admin-map.component';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginComponent, RegisterComponent, SubmitIssueComponent,
+    HomeComponent, AppComponent, NavbarComponent, LoginComponent, RegisterComponent, SubmitIssueComponent,
     MyIssuesComponent, IssueDetailsComponent, MapComponent,
     AdminLoginComponent, AdminDashboardComponent, AdminIssuesTableComponent,
     AdminIssueDetailsComponent, AdminMapComponent
